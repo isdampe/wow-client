@@ -1,3 +1,4 @@
 **.swp
 **.swo
 node_modules/*
+tools/waypoint-maker/node_modules/*

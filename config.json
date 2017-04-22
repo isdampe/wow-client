@@ -1,0 +1,21 @@
+{
+  "memServer": {
+    "host": "localhost",
+    "port": "8888"
+  },
+  "keyBindings": {
+    "forward": "w",
+    "left": "a",
+    "right": "d",
+    "backward": "s",
+    "jump": "<space>",
+    "bgQueue": "1",
+    "bgJoin": "2",
+    "bgMount": "3",
+    "bgBuff1": "4",
+    "bgBuff2": "5",
+    "bgOffensiveInstant": "6",
+    "bgOffensiveCast": "7",
+    "bgLeave": "="
+  }
+}
