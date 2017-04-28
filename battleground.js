@@ -80,7 +80,7 @@ function interruptSignal(p) {
       console.error('Unexpectadly left battleground.');
       console.error('Switching back to status 1.')
       status = 1;
-      //bgClass.onCancel();?
+      bgClass.onCancel();
     }
   }
 
