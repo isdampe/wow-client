@@ -26,6 +26,7 @@ function main() {
 
     case 1:
       //Need to queue.
+      control.allKeysUp();
       status = 2;
       console.log('Queing for BG');
       control.queueForBg(() => {
@@ -33,7 +34,7 @@ function main() {
         status = 3;
         bgKeyPressFn = setInterval(() => {
           control.tryEnterBg();
-        }, 1000);
+        }, (Math.floor(Math.random() * 3) + 6) * 1000  );
       });
       break;
 
