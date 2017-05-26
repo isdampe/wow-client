@@ -1,7 +1,7 @@
 const fs = require('fs');
 const wowMemClient = require('./../../lib/mem-client.js');
 
-var client = new wowMemClient( 'localhost', 8888 );
+var client = new wowMemClient( 'localhost', 8888, false );
 
 client.on("onData", () => {
 
@@ -22,6 +22,7 @@ client.on("onData", () => {
     y: parseFloat(m.playerY),
     z: parseFloat(m.playerZ)
   };
+	console.log(buff);
 
   //Don't add double entries.
   if ( oj.length > 0 ) {
