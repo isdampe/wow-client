@@ -1,10 +1,12 @@
 const wowMemClient = require('./../../lib/mem-client.js');
 const wowControl = require('./../../lib/wow-control.js');
+const wowInput = require('./../../lib/wow-input.js');
 
 var client = new wowMemClient( 'localhost', 8888, false );
 var controller = new wowControl( () => {
   return client.getMemory();
 } );
+var input = new wowInput();
 
 //Stormwind...
 var points = [
@@ -30,6 +32,8 @@ var maxPoints = points.length;
 
 var autoWalkToPoint = ( i ) => {
 
+  console.log(client.getMemory());
+
   console.log('point ' + i);
   if ( i >= maxPoints ) {
     console.log('done');
@@ -39,13 +43,25 @@ var autoWalkToPoint = ( i ) => {
   var cp = points[i];
   controller.walkTo( cp.x, cp.y, () => {
     autoWalkToPoint( i + 1 );
-  } )
+  }, null, (player) => {
+
+    //Check for targets.
+    if ( player.playerTarget > 0 ) {
+      var dist = controller.calculateDistance(player.playerY, player.playerX, player.targetY, player.targetX);
+      if ( dist < 30 ) {
+        console.log('Combat mode!');
+        controller.cancelAll();
+      }
+    }
+
+  });
 
 };
 
+input.activateWindow();
 setTimeout(() => {
     autoWalkToPoint( 0 );
-},1000);
+}, 1000);
 
 /*
 setTimeout(() => {

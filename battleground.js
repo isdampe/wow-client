@@ -16,6 +16,7 @@ var bgKeyPressFn;
 function main() {
 
   var p = client.getMemory();
+  //console.log(p)
   if ( typeof p !== 'undefined' ) player = p;
 
   //Check for interrupts.
@@ -88,7 +89,13 @@ function interruptSignal(p) {
 }
 
 status = 1;
-setInterval(() => {
-  //Main is the dispatch loop.
-  main();
-}, 25);
+
+setTimeout(() => {
+  setInterval(() => {
+    //Main is the dispatch loop.
+    main();
+  }, 25);
+  setInterval(() => {
+    console.log( client.getMemory() );
+  }, 5000);
+}, 2500);

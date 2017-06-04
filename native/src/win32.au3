@@ -5,11 +5,12 @@
 #AutoIt3Wrapper_UseUpx=y
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 
+
 if $cmdline[0] < 1 then
 exit
 endif
 
 switch $cmdline[1]
   case "winactivate"
-    WinActivate("World of Warcraft");
+    WinActivate("[TITLE:World of Warcraft; CLASS:GxWindowClass]", "");
 endswitch
