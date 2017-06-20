@@ -2,7 +2,7 @@ const wowMemClient = require('./../../lib/mem-client.js');
 const wowControl = require('./../../lib/wow-control.js');
 const wowInput = require('./../../lib/wow-input.js');
 
-var client = new wowMemClient( 'localhost', 8888, false );
+var client = new wowMemClient( 'localhost', 8888, true );
 var controller = new wowControl( () => {
   return client.getMemory();
 } );
