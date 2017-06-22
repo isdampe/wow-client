@@ -3,6 +3,10 @@
     "host": "localhost",
     "port": "8888"
   },
+  "telnetServer": {
+    "host": "localhost",
+    "port": "9001"
+  },
   "keyBindings": {
     "forward": "w",
     "left": "a",
