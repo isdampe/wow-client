@@ -172,7 +172,7 @@ function translateStatus( status ) {
 }
 
 function setupTelnet() {
-  var srv = new telnetSrv('localhost', 9001, () => {
+  var srv = new telnetSrv('0.0.0.0', 9001, () => {
     var p = client.getMemory();
     var buff = "";
     buff += "Connected: " + ( parseInt(p.isConnected) > 0 ? "Yes" : "No" ) + "\n";
