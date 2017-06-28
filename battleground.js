@@ -12,22 +12,15 @@ const STATUS_AWAITING_BG = 30;
 const STATUS_ARRIVED_IN_BG = 40;
 const STATUS_BG_ACTIVE = 50;
 
-
-var client = new wowMemClient( 'localhost', 8888 );
-var control = new wowInput({});
-var zone = new wowZone();
-var dcTime = false;
-
-var player = {};
-var status = 0;
-var interrupt = false;
-var bgClass;
-var bgKeyPressFn;
+var client = new wowMemClient( 'localhost', 8888 ), 
+    control = new wowInput({}),
+    zone = new wowZone();
+var dcTime = false, player = {}, status = 0, interrupt = false, bgClass,
+    bgKeyPressFn;
 
 function main() {
 
   var p = client.getMemory();
-  //console.log(p)
   if ( typeof p !== 'undefined' ) player = p;
 
   //Check for interrupts.
@@ -37,8 +30,8 @@ function main() {
   switch ( status ) {
 
     case STATUS_DETECT:
+
       //Detect state.
-      console.log(p);
       if ( parseInt(p.isConnected) < 1 ) {
         //Game is not connected.
         console.log('Disconnected from server');
@@ -71,10 +64,13 @@ function main() {
       break;
 
     case STATUS_QUEUE:
+
       //Need to queue.
       control.allKeysUp();
+
       status = STATUS_AWAITING_QUEUE_ACTION;
       console.log('Queing for BG');
+      
       control.queueForBg(() => {
         console.log('Waiting for BG to pop.');
         status = STATUS_AWAITING_BG;
