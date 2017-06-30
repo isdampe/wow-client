@@ -35,8 +35,8 @@ function main() {
       if ( parseInt(p.isConnected) < 1 ) {
         //Game is not connected.
         console.log('Disconnected from server');
-        dcTime = new Date();
-        status = STATUS_DC;
+//        dcTime = new Date();
+  //      status = STATUS_DC;
       }  else {
         //Game is connected.
         status = STATUS_QUEUE;
