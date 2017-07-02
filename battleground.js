@@ -3,6 +3,7 @@ const wowInput = require('./lib/wow-input.js');
 const wowZone = require('./lib/wow-zone.js');
 const wowBattleground = require('./lib/wow-battleground.js');
 const telnetSrv = require('./lib/telnet.js');
+const httpSrv = require('./lib/http.js');
 
 const STATUS_DETECT = 0;
 const STATUS_DC = 5;
@@ -35,8 +36,8 @@ function main() {
       if ( parseInt(p.isConnected) < 1 ) {
         //Game is not connected.
         console.log('Disconnected from server');
-//        dcTime = new Date();
-  //      status = STATUS_DC;
+        dcTime = new Date();
+        status = STATUS_DC;
       }  else {
         //Game is connected.
         status = STATUS_QUEUE;
@@ -178,10 +179,15 @@ function setupTelnet() {
   });
 }
 
+function setupHttp() {
+  var httpServer = new httpSrv('0.0.0.0', 9002, client);
+}
+
 status = STATUS_DETECT;
 
 setTimeout(() => {
   setupTelnet();
+  setupHttp();
   main();
   setInterval(() => {
     console.log( client.getMemory() );
